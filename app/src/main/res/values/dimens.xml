@@ -1,3 +1,6 @@
 <resources>
     <dimen name="marginNormal">16dp</dimen>
+    <dimen name="bgScheduleStrokeWidth">4dp</dimen>
+    <dimen name="marginSmall">8dp</dimen>
+    <dimen name="marginTiny">4dp</dimen>
 </resources>
