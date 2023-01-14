@@ -15,7 +15,6 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
-import java.util.TimeZone
 
 class ScheduleItemView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
@@ -25,9 +24,9 @@ class ScheduleItemView(context: Context, attrs: AttributeSet) : View(context, at
     private var bitmap: Bitmap? = null
     private val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
 
-    fun setTime(timeStart: String, lengthMinutes: Int) {
+    fun setTime(timeStart: Date, lengthMinutes: Int) {
         val minuteMs = 1000L * 60L
-        start = timeFormat.parse(timeStart) ?: throw IllegalArgumentException("Parsing error.")
+        start = timeStart
         end = Date(start.time + lengthMinutes * minuteMs)
         invalidate()
     }
@@ -72,28 +71,18 @@ class ScheduleItemView(context: Context, attrs: AttributeSet) : View(context, at
 
     private fun drawOverlay(canvas: Canvas) {
         val current = Calendar.getInstance()
-        val offset = (TimeZone.getDefault().rawOffset / (1000L * 60L * 60L)).toInt()
-        val startCalendar = Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, offset)
-            set(Calendar.MINUTE, 0)
-            timeInMillis += start.time
-        }
-        val endCalendar = Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, offset)
-            set(Calendar.MINUTE, 0)
-            timeInMillis += end.time
-        }
         when {
-            current.timeInMillis >= endCalendar.timeInMillis -> canvas.drawColor(overlay)
-            current.timeInMillis >= startCalendar.timeInMillis &&
-                current.timeInMillis < endCalendar.timeInMillis -> {
+            current.timeInMillis >= start.time && current.timeInMillis < end.time -> {
                 val rect = RectF(
                     0f,
                     0f,
-                    width * (current.timeInMillis - startCalendar.timeInMillis).toFloat() / (endCalendar.timeInMillis - startCalendar.timeInMillis),
+                    width * (current.timeInMillis - start.time).toFloat() / (end.time - start.time),
                     height.toFloat()
                 )
                 canvas.drawRect(rect, overlayPaint)
+            }
+            current.timeInMillis >= start.time -> {
+                canvas.drawColor(overlay)
             }
         }
     }
