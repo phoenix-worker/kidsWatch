@@ -199,7 +199,7 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
         }
     }
 
-    private val eventYOffsetFactor = 0.15f
+    private val eventYOffsetFactor = 0.18f
     private fun drawEvents(canvas: Canvas) {
         events.forEach { event ->
             rows.filter { it.start <= event.time && it.end > event.time }.forEach { row ->
