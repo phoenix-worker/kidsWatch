@@ -111,6 +111,7 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
         textSize = 36f
         typeface = Typeface.DEFAULT_BOLD
         style = Paint.Style.FILL
+        isAntiAlias = true
     }
 
     private val textOffsetX = 15f
@@ -136,7 +137,7 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
     }
 
     private val safeZonePx = 100
-    private val verticalOffsetFactor = 0.3f
+    private val verticalOffsetFactor = 0.35f
     private fun drawOverlay(canvas: Canvas) {
         rows.forEach { row ->
             val current = Calendar.getInstance()
@@ -146,10 +147,10 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
                     var currentX =
                         row.rectF.width() * (current.timeInMillis - row.start).toFloat() / (row.end - row.start)
                     when {
-                        currentX + safeZonePx > row.rectF.right -> currentX =
-                            row.rectF.right - safeZonePx
-                        currentX - safeZonePx < row.rectF.left -> currentX =
-                            row.rectF.left + safeZonePx
+                        currentX + safeZonePx > row.rectF.right ->
+                            currentX = row.rectF.right - safeZonePx
+                        currentX - safeZonePx < row.rectF.left ->
+                            currentX = row.rectF.left + safeZonePx
                     }
                     drawWatches(canvas, currentX, currentY)
                     drawFace(canvas, currentX, currentY)
@@ -163,10 +164,12 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
         textAlign = Paint.Align.CENTER
         textSize = 30f
         typeface = Typeface.DEFAULT_BOLD
+        isAntiAlias = true
     }
     private val watchBackgroundPaint = Paint().apply {
         color = ContextCompat.getColor(context, R.color.white)
         style = Paint.Style.FILL
+        isAntiAlias = true
     }
     private val watchBackMargin = 15f
     private fun drawWatches(canvas: Canvas, x: Float, y: Float) {
