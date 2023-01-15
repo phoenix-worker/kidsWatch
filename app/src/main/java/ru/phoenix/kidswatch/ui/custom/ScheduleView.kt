@@ -122,7 +122,7 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
             val minuteSizePx = width.toFloat() / ((row.end - row.start) / minuteMs)
             for ((step, i) in (row.start until row.end step minuteMs).withIndex()) {
                 if (i % hourMs == 0L) {
-                    val x = step * minuteSizePx + ScheduleItemView.MESH_OFFSET_PX
+                    val x = step * minuteSizePx
                     canvas.drawLine(x, row.rectF.top, x, row.rectF.bottom, meshPaint)
                     canvas.drawText(
                         timeFormat.format(Date(i)),
