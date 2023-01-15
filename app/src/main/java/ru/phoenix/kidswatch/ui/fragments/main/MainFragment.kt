@@ -1,5 +1,6 @@
 package ru.phoenix.kidswatch.ui.fragments.main
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import ru.phoenix.kidswatch.R
 import ru.phoenix.kidswatch.databinding.FragmentMainBinding
+import ru.phoenix.kidswatch.ui.custom.ScheduleView
 import java.util.Calendar
-import java.util.Date
 
 class MainFragment : Fragment() {
 
@@ -26,45 +27,62 @@ class MainFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         setupSchedule()
+        addScheduleEvents()
+        binding.schedule.startWatches()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        binding.schedule.stopWatches()
     }
 
     private fun setupSchedule() {
-        val calendar = Calendar.getInstance()
-        calendar.set(Calendar.HOUR_OF_DAY, START_DAY_HOUR)
-        calendar.set(Calendar.MINUTE, 0)
-        calendar.set(Calendar.SECOND, 0)
-        calendar.set(Calendar.MILLISECOND, 0)
+        val calendar = getScheduleCalendar()
+        val pairs = mutableListOf<ScheduleView.Row.RowInitializer>()
 
-        if (Date().time < calendar.timeInMillis) calendar.add(Calendar.DAY_OF_MONTH, -1)
+        var first = calendar.timeInMillis
+        calendar.add(Calendar.HOUR_OF_DAY, 11)
+        var second = calendar.timeInMillis
+        pairs.add(ScheduleView.Row.RowInitializer(first, second, Color.parseColor("#03A9F4")))
 
-        binding.run {
-            morning.setTime(calendar.time, 60)
-            calendar.add(Calendar.MINUTE, 60)
-            morning.setIcon(R.drawable.image_morning)
+        first = calendar.timeInMillis
+        calendar.add(Calendar.HOUR_OF_DAY, 5)
+        second = calendar.timeInMillis
+        pairs.add(ScheduleView.Row.RowInitializer(first, second, Color.parseColor("#4CAF50")))
 
-            kindergarden.setTime(calendar.time, 300)
-            calendar.add(Calendar.MINUTE, 300)
-            kindergarden.setIcon(R.drawable.image_kindergarden)
+        first = calendar.timeInMillis
+        calendar.add(Calendar.HOUR_OF_DAY, 8)
+        second = calendar.timeInMillis
+        pairs.add(ScheduleView.Row.RowInitializer(first, second, Color.parseColor("#212121")))
 
-            daySleep.setTime(calendar.time, 120)
-            calendar.add(Calendar.MINUTE, 120)
-            daySleep.setIcon(R.drawable.image_day_sleep)
+        binding.schedule.initialize(pairs)
+    }
 
-            afternoon.setTime(calendar.time, 180)
-            calendar.add(Calendar.MINUTE, 180)
-            afternoon.setIcon(R.drawable.image_afternoon)
+    private fun addScheduleEvents() {
+        val calendar = getScheduleCalendar()
+        calendar.set(Calendar.HOUR_OF_DAY, 7)
+        binding.schedule.addEvent(calendar.timeInMillis, R.drawable.image_morning)
+        calendar.set(Calendar.HOUR_OF_DAY, 8)
+        binding.schedule.addEvent(calendar.timeInMillis, R.drawable.image_kindergarden)
+        calendar.set(Calendar.HOUR_OF_DAY, 13)
+        binding.schedule.addEvent(calendar.timeInMillis, R.drawable.image_day_sleep)
+        calendar.set(Calendar.HOUR_OF_DAY, 15)
+        binding.schedule.addEvent(calendar.timeInMillis, R.drawable.image_afternoon)
+        calendar.set(Calendar.HOUR_OF_DAY, 18)
+        binding.schedule.addEvent(calendar.timeInMillis, R.drawable.image_evening)
+        calendar.set(Calendar.HOUR_OF_DAY, 22)
+        binding.schedule.addEvent(calendar.timeInMillis, R.drawable.image_before_sleep)
+        calendar.set(Calendar.HOUR_OF_DAY, 23)
+        binding.schedule.addEvent(calendar.timeInMillis, R.drawable.image_sleep)
+    }
 
-            evening.setTime(calendar.time, 240)
-            calendar.add(Calendar.MINUTE, 240)
-            evening.setIcon(R.drawable.image_evening)
-
-            beforeSleep.setTime(calendar.time, 60)
-            calendar.add(Calendar.MINUTE, 60)
-            beforeSleep.setIcon(R.drawable.image_before_sleep)
-
-            sleep.setTime(calendar.time, 480)
-            calendar.add(Calendar.MINUTE, 480)
-            sleep.setIcon(R.drawable.image_sleep)
+    private fun getScheduleCalendar(): Calendar {
+        return Calendar.getInstance().apply {
+            if (get(Calendar.HOUR_OF_DAY) < START_DAY_HOUR) add(Calendar.DAY_OF_MONTH, -1)
+            set(Calendar.HOUR_OF_DAY, START_DAY_HOUR)
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
         }
     }
 
