@@ -29,8 +29,11 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
     private var faceBitmap: Bitmap? = null
     private val events = mutableListOf<Event>()
 
-    fun initialize(rows: List<Row.RowInitializer>) {
+    init {
         watchHandler = Handler(Looper.getMainLooper(), this)
+    }
+
+    fun initialize(rows: List<Row.RowInitializer>) {
         initFaceImage()
         doOnLayout {
             createRectFs(rows)
@@ -77,8 +80,8 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
         canvas?.let {
             drawRows(canvas)
             drawHours(canvas)
-            drawOverlay(canvas)
             drawEvents(canvas)
+            drawOverlay(canvas)
         }
     }
 

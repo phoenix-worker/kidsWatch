@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
 import ru.phoenix.kidswatch.R
 import ru.phoenix.kidswatch.databinding.FragmentMainBinding
@@ -21,6 +23,7 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMainBinding.inflate(inflater, container, false)
+        setupWidgetsSize()
         return binding.root
     }
 
@@ -36,9 +39,10 @@ class MainFragment : Fragment() {
         binding.schedule.stopWatches()
     }
 
+    private var pairs: MutableList<ScheduleView.Row.RowInitializer> = mutableListOf()
     private fun setupSchedule() {
         val calendar = getScheduleCalendar()
-        val pairs = mutableListOf<ScheduleView.Row.RowInitializer>()
+        pairs = mutableListOf()
 
         var first = calendar.timeInMillis
         calendar.add(Calendar.HOUR_OF_DAY, 11)
@@ -54,8 +58,6 @@ class MainFragment : Fragment() {
         calendar.add(Calendar.HOUR_OF_DAY, 8)
         second = calendar.timeInMillis
         pairs.add(ScheduleView.Row.RowInitializer(first, second, Color.parseColor("#212121")))
-
-        binding.schedule.initialize(pairs)
     }
 
     private fun addScheduleEvents() {
@@ -98,8 +100,22 @@ class MainFragment : Fragment() {
         }
     }
 
+    private fun setupWidgetsSize() {
+        binding.root.doOnLayout {
+            val screenSize = activity?.window?.decorView?.width ?: 0
+            val size = (screenSize * ANALOG_WATCH_RATIO).toInt()
+            val params = ConstraintLayout.LayoutParams(size, size)
+            params.startToEnd = binding.schedule.id
+            params.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID
+            params.topToTop = ConstraintLayout.LayoutParams.PARENT_ID
+            binding.watch.layoutParams = params
+        }
+        binding.schedule.doOnLayout { binding.schedule.initialize(pairs) }
+    }
+
     companion object {
         const val START_DAY_HOUR = 7
+        const val ANALOG_WATCH_RATIO = 0.25
     }
 
 }
