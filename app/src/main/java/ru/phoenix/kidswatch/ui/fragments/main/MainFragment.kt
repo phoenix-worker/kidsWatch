@@ -32,11 +32,13 @@ class MainFragment : Fragment() {
         setupSchedule()
         addScheduleEvents()
         binding.schedule.startWatches()
+        binding.watch.startWatches()
     }
 
     override fun onStop() {
         super.onStop()
         binding.schedule.stopWatches()
+        binding.watch.stopWatches()
     }
 
     private var pairs: MutableList<ScheduleView.Row.RowInitializer> = mutableListOf()
