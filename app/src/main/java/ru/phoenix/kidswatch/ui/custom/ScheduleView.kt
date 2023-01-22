@@ -24,7 +24,7 @@ import java.util.Locale
 class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs), Handler.Callback {
 
     private var watchHandler: Handler? = null
-    private val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+    private val timeFormat = SimpleDateFormat("h:mm", Locale.getDefault())
     private val rows = mutableListOf<Row>()
     private var faceBitmap: Bitmap? = null
     private val events = mutableListOf<Event>()
@@ -111,14 +111,14 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
 
     private val textPaint = Paint().apply {
         color = ContextCompat.getColor(context, R.color.white)
-        textSize = 36f
+        textSize = 24f
         typeface = Typeface.DEFAULT_BOLD
         style = Paint.Style.FILL
         isAntiAlias = true
     }
 
     private val textOffsetX = 15f
-    private val textOffsetY = 50f
+    private val textOffsetY = 40f
     private fun drawHours(canvas: Canvas) {
         rows.forEach { row ->
             val minuteMs = 1000L * 60L
@@ -176,7 +176,7 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
     }
     private val watchBackMargin = 15f
     private fun drawWatches(canvas: Canvas, x: Float, y: Float) {
-        val format = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
+        val format = SimpleDateFormat("h:mm:ss", Locale.getDefault())
         val text = format.format(Date())
         val rect = Rect()
         watchPaint.getTextBounds(text, 0, text.length, rect)
