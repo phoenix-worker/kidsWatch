@@ -1,4 +1,4 @@
-package ru.phoenix.kidswatch.ui.fragments.main
+package ru.phoenix.kidswatch.ui.fragments
 
 import android.graphics.Color
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import ru.phoenix.kidswatch.R
 import ru.phoenix.kidswatch.databinding.FragmentMainBinding
 import ru.phoenix.kidswatch.ui.custom.ScheduleView
@@ -33,6 +34,9 @@ class MainFragment : Fragment() {
         addScheduleEvents()
         binding.schedule.startWatches()
         binding.watch.startWatches()
+        binding.buttonSettings.setOnClickListener {
+            findNavController().navigate(R.id.action_MainFragment_to_SettingsFragment)
+        }
     }
 
     override fun onStop() {
@@ -87,6 +91,7 @@ class MainFragment : Fragment() {
         calendar.set(Calendar.HOUR_OF_DAY, 21)
         binding.schedule.addEvent(calendar.timeInMillis, R.drawable.image_games)
         calendar.set(Calendar.HOUR_OF_DAY, 22)
+        calendar.set(Calendar.MINUTE, 30)
         binding.schedule.addEvent(calendar.timeInMillis, R.drawable.image_before_sleep)
         calendar.set(Calendar.HOUR_OF_DAY, 23)
         binding.schedule.addEvent(calendar.timeInMillis, R.drawable.image_sleep)
