@@ -76,8 +76,8 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
         invalidate()
     }
 
-    override fun onDraw(canvas: Canvas?) {
-        canvas?.let {
+    override fun onDraw(canvas: Canvas) {
+        canvas.let {
             drawRows(canvas)
             drawHours(canvas)
             drawEvents(canvas)
@@ -152,6 +152,7 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
                     when {
                         currentX + safeZonePx > row.rectF.right ->
                             currentX = row.rectF.right - safeZonePx
+
                         currentX - safeZonePx < row.rectF.left ->
                             currentX = row.rectF.left + safeZonePx
                     }

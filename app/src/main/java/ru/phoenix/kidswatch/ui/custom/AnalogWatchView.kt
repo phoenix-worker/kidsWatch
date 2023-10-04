@@ -28,8 +28,8 @@ class AnalogWatchView(
         watchHandler = Handler(Looper.getMainLooper(), this)
     }
 
-    override fun onDraw(canvas: Canvas?) {
-        canvas?.let {
+    override fun onDraw(canvas: Canvas) {
+        canvas.let {
             drawHours(it)
             drawHoursDigits(it)
             drawMinutesDigits(it)
