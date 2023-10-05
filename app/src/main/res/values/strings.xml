@@ -4,4 +4,5 @@
     <string name="intervalsTitle">Интервалы</string>
     <string name="eventsTitle">События</string>
     <string name="otherTitle">Разное</string>
+    <string name="buttonChangeIntervals">Изменить</string>
 </resources>

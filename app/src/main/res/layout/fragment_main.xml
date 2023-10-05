@@ -4,29 +4,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ru.phoenix.kidswatch.ui.custom.ScheduleView
+    <ru.phoenix.kidswatch.custom.ScheduleView
         android:id="@+id/schedule"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toStartOf="@id/watch"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ru.phoenix.kidswatch.ui.custom.AnalogWatchView
+    <ru.phoenix.kidswatch.custom.AnalogWatchView
         android:id="@+id/watch"
         android:layout_width="150dp"
         android:layout_height="150dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/buttonSettings"
-        style="@style/Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/normalMargin"
         android:layout_marginBottom="@dimen/normalMargin"
-        android:text="@string/buttonSettings"
+        android:contentDescription="@string/buttonSettings"
+        android:src="@drawable/ic_settings"
+        app:backgroundTint="@color/buttonBackground"
+        app:fabSize="mini"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/watch"
-        app:layout_constraintStart_toStartOf="@id/watch" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

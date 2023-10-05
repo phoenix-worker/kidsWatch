@@ -1,4 +1,4 @@
-package ru.phoenix.kidswatch.ui
+package ru.phoenix.kidswatch
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

@@ -1,4 +1,4 @@
-package ru.phoenix.kidswatch.ui.fragments
+package ru.phoenix.kidswatch.fragments
 
 import android.graphics.Color
 import android.os.Bundle
@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import ru.phoenix.kidswatch.R
+import ru.phoenix.kidswatch.custom.ScheduleView.Row.RowInitializer
 import ru.phoenix.kidswatch.databinding.FragmentMainBinding
-import ru.phoenix.kidswatch.ui.custom.ScheduleView.Row.RowInitializer
 import java.util.Calendar
 
 class MainFragment : Fragment() {

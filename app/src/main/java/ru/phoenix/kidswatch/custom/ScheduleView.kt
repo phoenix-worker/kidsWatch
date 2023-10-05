@@ -1,4 +1,4 @@
-package ru.phoenix.kidswatch.ui.custom
+package ru.phoenix.kidswatch.custom
 
 import android.content.Context
 import android.graphics.Bitmap

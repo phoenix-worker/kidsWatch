@@ -6,4 +6,6 @@
     <color name="icLauncherBackground">#FF9800</color>
     <color name="analogWatchesHours">#EF5350</color>
     <color name="secondHandle">#9E9E9E</color>
+    <color name="rvItemBackground">#FF9800</color>
+    <color name="buttonBackground">#FF9800</color>
 </resources>
