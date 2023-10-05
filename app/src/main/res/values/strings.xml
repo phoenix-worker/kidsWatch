@@ -5,4 +5,12 @@
     <string name="eventsTitle">События</string>
     <string name="otherTitle">Разное</string>
     <string name="buttonChangeIntervals">Изменить</string>
+    <string name="dialogChangeIntervalsHint">Введите через пробел от трёх до пяти цифр, являющихся началом интервалов для главного экрана, которые удобны для вас и вашего ребёнка. Например, ввод \"7 12 18 23\" создаст четыре интервала:\n• 7 – 12 часов\n• 12 – 18 часов\n• 18 – 23 часов\n• 23 – 7 часов</string>
+    <string name="intervalsHint">Введите интервалы</string>
+    <string name="buttonSave">Сохранить</string>
+    <string name="inputErrorIntervals">Ошибка ввода.</string>
+    <string name="weirdDataErrorIntervals">Подозрительные числа для времени.</string>
+    <string name="littleDataErrorIntervals">Введите не менее двух чисел через пробел.</string>
+    <string name="tooMuchDataErrorIntervals">Введите не более пяти чисел через пробел.</string>
+    <string name="orderErrorIntervals">Неверный порядок чисел.</string>
 </resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/buttonBackground"
+    android:padding="@dimen/dialogPadding">
+
+    <TextView
+        android:id="@+id/hint"
+        style="@style/DialogText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="@dimen/dialogWidgetWidth"
+        android:text="@string/dialogChangeIntervalsHint"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/intervals"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/intervals"
+        android:layout_width="@dimen/dialogWidgetWidth"
+        android:layout_height="@dimen/editTextHeight"
+        android:layout_marginStart="@dimen/normalMargin"
+        android:hint="@string/intervalsHint"
+        android:importantForAutofill="no"
+        android:inputType="text|number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/hint"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/info"
+        style="@style/DialogText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normalMargin"
+        app:layout_constraintEnd_toEndOf="@id/intervals"
+        app:layout_constraintStart_toStartOf="@id/intervals"
+        app:layout_constraintTop_toBottomOf="@id/intervals"
+        tools:text="Chop chop chop." />
+
+    <Button
+        android:id="@+id/buttonSave"
+        style="@style/DialogButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buttonSave"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/intervals"
+        app:layout_constraintStart_toStartOf="@id/intervals" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

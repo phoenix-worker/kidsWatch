@@ -13,6 +13,7 @@ import ru.phoenix.kidswatch.MainViewModel
 import ru.phoenix.kidswatch.R
 import ru.phoenix.kidswatch.adapters.IntervalsAdapter
 import ru.phoenix.kidswatch.databinding.FragmentSettingsBinding
+import ru.phoenix.kidswatch.dialogs.ChangeIntervalsDialog
 
 class SettingsFragment : Fragment() {
 
@@ -32,10 +33,17 @@ class SettingsFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         setObservers()
+        setListeners()
     }
 
     private fun setObservers() {
         mainVM.intervals.observe(viewLifecycleOwner) { onIntervalsChanged(it) }
+    }
+
+    private fun setListeners() {
+        binding.changeIntervals.setOnClickListener {
+            ChangeIntervalsDialog().show(childFragmentManager, "change_intervals_dialog")
+        }
     }
 
     private fun onIntervalsChanged(intervals: List<String>) {

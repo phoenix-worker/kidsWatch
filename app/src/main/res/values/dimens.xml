@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="normalMargin">16dp</dimen>
+    <dimen name="dialogPadding">32dp</dimen>
+    <dimen name="dialogWidgetWidth">300dp</dimen>
+    <dimen name="editTextHeight">60dp</dimen>
 </resources>

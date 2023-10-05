@@ -10,6 +10,7 @@ import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
+import ru.phoenix.kidswatch.MainViewModel
 import ru.phoenix.kidswatch.R
 import ru.phoenix.kidswatch.custom.ScheduleView.Row.RowInitializer
 import ru.phoenix.kidswatch.databinding.FragmentMainBinding
@@ -50,8 +51,8 @@ class MainFragment : Fragment() {
     private var pairs: MutableList<RowInitializer> = mutableListOf()
 
     private fun getStartHours(): List<Int> {
-        val intervals = prefs.getString(PREF_INTERVALS, null) ?: DEFAULT_INTERVALS
-        return intervals.split(',').map { it.trim() }.map { it.toInt() }
+        val intervalsString = prefs.getString(PREF_INTERVALS, null) ?: DEFAULT_INTERVALS
+        return MainViewModel.getPointFromIntervalsString(intervalsString)
     }
 
     private fun setupSchedule() {
@@ -134,7 +135,7 @@ class MainFragment : Fragment() {
 
     companion object {
         const val PREF_INTERVALS = "pref_intervals"
-        const val DEFAULT_INTERVALS = "7,13,18,23"
+        const val DEFAULT_INTERVALS = "7 13 18 23"
         const val ANALOG_WATCH_RATIO = 0.25
     }
 
