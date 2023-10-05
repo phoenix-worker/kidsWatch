@@ -9,14 +9,16 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
 import ru.phoenix.kidswatch.R
 import ru.phoenix.kidswatch.databinding.FragmentMainBinding
-import ru.phoenix.kidswatch.ui.custom.ScheduleView
+import ru.phoenix.kidswatch.ui.custom.ScheduleView.Row.RowInitializer
 import java.util.Calendar
 
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
+    private val prefs by lazy { PreferenceManager.getDefaultSharedPreferences(requireActivity()) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,29 +47,39 @@ class MainFragment : Fragment() {
         binding.watch.stopWatches()
     }
 
-    private var pairs: MutableList<ScheduleView.Row.RowInitializer> = mutableListOf()
+    private var pairs: MutableList<RowInitializer> = mutableListOf()
+
+    private fun getStartHours(): List<Int> {
+        val intervals = prefs.getString(PREF_INTERVALS, null) ?: DEFAULT_INTERVALS
+        return intervals.split(',').map { it.trim() }.map { it.toInt() }
+    }
+
     private fun setupSchedule() {
-        val calendar = getScheduleCalendar()
+        val startHours = getStartHours()
+        val calendar = getScheduleCalendar(startHours[0])
         pairs = mutableListOf()
+        for ((index, startHour) in startHours.withIndex()) {
+            val first = calendar.timeInMillis
+            if (index < startHours.lastIndex)
+                calendar.add(Calendar.HOUR_OF_DAY, countHours(startHour, startHours[index + 1]))
+            else calendar.add(Calendar.HOUR_OF_DAY, countHours(startHour, startHours[0]))
+            pairs.add(RowInitializer(first, calendar.timeInMillis, Color.parseColor("#03A9F4")))
+        }
+    }
 
-        var first = calendar.timeInMillis
-        calendar.add(Calendar.HOUR_OF_DAY, 11)
-        var second = calendar.timeInMillis
-        pairs.add(ScheduleView.Row.RowInitializer(first, second, Color.parseColor("#03A9F4")))
-
-        first = calendar.timeInMillis
-        calendar.add(Calendar.HOUR_OF_DAY, 5)
-        second = calendar.timeInMillis
-        pairs.add(ScheduleView.Row.RowInitializer(first, second, Color.parseColor("#4CAF50")))
-
-        first = calendar.timeInMillis
-        calendar.add(Calendar.HOUR_OF_DAY, 8)
-        second = calendar.timeInMillis
-        pairs.add(ScheduleView.Row.RowInitializer(first, second, Color.parseColor("#212121")))
+    private fun countHours(start: Int, end: Int): Int {
+        var pointer = start
+        var counter = 0
+        while (pointer != end) {
+            counter++
+            pointer++
+            if (pointer == 24) pointer = 0
+        }
+        return counter
     }
 
     private fun addScheduleEvents() {
-        val calendar = getScheduleCalendar()
+        val calendar = getScheduleCalendar(getStartHours()[0])
         calendar.set(Calendar.HOUR_OF_DAY, 7)
         binding.schedule.addEvent(calendar.timeInMillis, R.drawable.image_morning)
         calendar.set(Calendar.HOUR_OF_DAY, 8)
@@ -97,10 +109,10 @@ class MainFragment : Fragment() {
         binding.schedule.addEvent(calendar.timeInMillis, R.drawable.image_sleep)
     }
 
-    private fun getScheduleCalendar(): Calendar {
+    private fun getScheduleCalendar(startHour: Int): Calendar {
         return Calendar.getInstance().apply {
-            if (get(Calendar.HOUR_OF_DAY) < START_DAY_HOUR) add(Calendar.DAY_OF_MONTH, -1)
-            set(Calendar.HOUR_OF_DAY, START_DAY_HOUR)
+            if (get(Calendar.HOUR_OF_DAY) < startHour) add(Calendar.DAY_OF_MONTH, -1)
+            set(Calendar.HOUR_OF_DAY, startHour)
             set(Calendar.MINUTE, 0)
             set(Calendar.SECOND, 0)
             set(Calendar.MILLISECOND, 0)
@@ -121,7 +133,8 @@ class MainFragment : Fragment() {
     }
 
     companion object {
-        const val START_DAY_HOUR = 7
+        const val PREF_INTERVALS = "pref_intervals"
+        const val DEFAULT_INTERVALS = "7,13,18,23"
         const val ANALOG_WATCH_RATIO = 0.25
     }
 
