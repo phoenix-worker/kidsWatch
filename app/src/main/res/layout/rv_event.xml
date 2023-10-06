@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rv_item_background">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="@dimen/eventIconSize"
+        android:layout_height="@dimen/eventIconSize"
+        android:layout_margin="@dimen/normalMargin"
+        android:contentDescription="@string/cdEventIcon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/image_face_girl" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/normalMargin"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/icon"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="17:00" />
+
+    <ImageButton
+        android:id="@+id/delete"
+        android:layout_width="@dimen/imageButtonSize"
+        android:layout_height="@dimen/imageButtonSize"
+        android:layout_marginEnd="@dimen/normalMargin"
+        android:background="@drawable/ripple_image_button"
+        android:contentDescription="@string/buttonDelete"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/imageButtonTint" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

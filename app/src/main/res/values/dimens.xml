@@ -12,4 +12,7 @@
     <dimen name="settingsScreenTitleTextSize">24sp</dimen>
     <dimen name="dialogTextSize">18sp</dimen>
     <dimen name="buttonTextSize">18sp</dimen>
+    <dimen name="eventIconSize">60dp</dimen>
+    <dimen name="imageButtonSize">48dp</dimen>
+    <dimen name="intervalTextSize">26sp</dimen>
 </resources>

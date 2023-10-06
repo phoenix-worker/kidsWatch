@@ -3,15 +3,23 @@ package ru.phoenix.kidswatch
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.preference.PreferenceManager
 import androidx.room.Room
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import ru.phoenix.kidswatch.database.Database
+import ru.phoenix.kidswatch.database.DbEvent
 import ru.phoenix.kidswatch.fragments.MainFragment.Companion.DEFAULT_INTERVALS
 import ru.phoenix.kidswatch.fragments.MainFragment.Companion.PREF_INTERVALS
 
 class MainViewModel : ViewModel() {
 
-    val db: Database
+    val db: Database = Room
+        .databaseBuilder(App.getInstance(), Database::class.java, Database.dbName)
+        .addCallback(Database.dbCallback)
+        .build()
+
     private val prefs by lazy { PreferenceManager.getDefaultSharedPreferences(App.getInstance()) }
 
     private val _intervals = MutableLiveData<List<String>>()
@@ -32,11 +40,18 @@ class MainViewModel : ViewModel() {
         _intervals.postValue(intervals)
     }
 
+    private val _events = MutableLiveData<List<DbEvent>>()
+    val events: LiveData<List<DbEvent>> = _events
+
+    private fun updateEvents() {
+        viewModelScope.launch(Dispatchers.IO) {
+            _events.postValue(db.eventsDao().getAllEvents())
+        }
+    }
+
     init {
         updateIntervals()
-        db = Room.databaseBuilder(App.getInstance(), Database::class.java, Database.dbName)
-            .addCallback(Database.dbCallback)
-            .build()
+        updateEvents()
     }
 
     companion object {
@@ -47,7 +62,5 @@ class MainViewModel : ViewModel() {
                 .filter { it.isNotBlank() }
                 .map { it.trim().toInt() }
         }
-
     }
-
 }

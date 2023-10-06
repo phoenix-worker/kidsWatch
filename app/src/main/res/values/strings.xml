@@ -3,8 +3,7 @@
     <string name="buttonSettings">Настройки</string>
     <string name="intervalsTitle">Интервалы</string>
     <string name="eventsTitle">События</string>
-    <string name="otherTitle">Разное</string>
-    <string name="buttonChangeIntervals">Изменить</string>
+    <string name="buttonChangeIntervals">Изменить интервалы</string>
     <string name="dialogChangeIntervalsHint">Введите через пробел от трёх до пяти цифр, являющихся началом интервалов для главного экрана, которые удобны для вас и вашего ребёнка. Например, ввод \"7 12 18 23\" создаст четыре интервала:\n• 7 – 12 часов\n• 12 – 18 часов\n• 18 – 23 часов\n• 23 – 7 часов</string>
     <string name="intervalsHint">Введите интервалы</string>
     <string name="buttonSave">Сохранить</string>
@@ -19,4 +18,7 @@
     <string name="format12hours">12 часов</string>
     <string name="format24hours">24 часа</string>
     <string name="timeFormatTitle">Формат времени</string>
+    <string name="buttonDelete">Удалить</string>
+    <string name="cdEventIcon">Иконка события</string>
+    <string name="buttonAddEvent">Добавить событие</string>
 </resources>

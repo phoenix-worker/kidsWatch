@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import ru.phoenix.kidswatch.MainViewModel
 import ru.phoenix.kidswatch.R
+import ru.phoenix.kidswatch.adapters.EventsAdapter
 import ru.phoenix.kidswatch.adapters.IntervalsAdapter
+import ru.phoenix.kidswatch.database.DbEvent
 import ru.phoenix.kidswatch.databinding.FragmentSettingsBinding
 import ru.phoenix.kidswatch.dialogs.ChangeIntervalsDialog
 
@@ -30,6 +32,7 @@ class SettingsFragment : Fragment() {
     ): View {
         binding = FragmentSettingsBinding.inflate(inflater, container, false)
         setupIntervalsRv()
+        setupEventsRv()
         setupSex()
         setupTimeFormat()
         return binding.root
@@ -43,6 +46,7 @@ class SettingsFragment : Fragment() {
 
     private fun setObservers() {
         mainVM.intervals.observe(viewLifecycleOwner) { onIntervalsChanged(it) }
+        mainVM.events.observe(viewLifecycleOwner) { onEventsChanged(it) }
     }
 
     private fun setListeners() {
@@ -85,9 +89,18 @@ class SettingsFragment : Fragment() {
         (binding.intervals.adapter as IntervalsAdapter).updateList(intervals)
     }
 
+    private fun onEventsChanged(events: List<DbEvent>) {
+        (binding.events.adapter as EventsAdapter).updateList(events)
+    }
+
     private fun setupIntervalsRv() {
         binding.intervals.addItemDecoration(Decoration())
         binding.intervals.adapter = IntervalsAdapter()
+    }
+
+    private fun setupEventsRv() {
+        binding.events.addItemDecoration(Decoration())
+        binding.events.adapter = EventsAdapter()
     }
 
     private fun setupSex() {

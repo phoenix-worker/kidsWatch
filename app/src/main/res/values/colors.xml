@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="white">#FFFFFFFF</color>
+    <color name="imageButtonTint">#98FFFFFF</color>
     <color name="black">#000000</color>
     <color name="watchTextColor">#212121</color>
     <color name="icLauncherBackground">#FF9800</color>
@@ -8,4 +9,5 @@
     <color name="secondHandle">#9E9E9E</color>
     <color name="rvItemBackground">#FF9800</color>
     <color name="buttonBackground">#FF9800</color>
+    <color name="lightRipple">#1AFFFFFF</color>
 </resources>

@@ -11,7 +11,10 @@ import android.os.Message
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.preference.PreferenceManager
 import ru.phoenix.kidswatch.R
+import ru.phoenix.kidswatch.fragments.SettingsFragment.Companion.PREF_TIME_FORMAT
+import ru.phoenix.kidswatch.fragments.SettingsFragment.Companion.TIME_FORMAT_12
 import java.util.Calendar
 import kotlin.math.cos
 import kotlin.math.sin
@@ -23,6 +26,7 @@ class AnalogWatchView(
 
     private var watchHandler: Handler? = null
     private val handlerCalendar = Calendar.getInstance()
+    private val prefs by lazy { PreferenceManager.getDefaultSharedPreferences(context) }
 
     init {
         watchHandler = Handler(Looper.getMainLooper(), this)
@@ -209,7 +213,10 @@ class AnalogWatchView(
             val outerR = hoursDigitsRatio * width / 2
             val outerX = outerR * sin(angle)
             val outerY = outerR * cos(angle)
-            val text = if (i != 0) i.toString() else "12"
+            val text = when (prefs.getInt(PREF_TIME_FORMAT, TIME_FORMAT_12)) {
+                TIME_FORMAT_12 -> if (i != 0) i.toString() else "12"
+                else -> if (i != 0) (i + 12).toString() else "0"
+            }
             val rect = Rect()
             hoursDigitsPaint.getTextBounds(text, 0, text.length, rect)
             canvas.drawText(

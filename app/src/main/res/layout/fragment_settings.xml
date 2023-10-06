@@ -21,24 +21,11 @@
         android:id="@+id/intervals"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/normalMargin"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/changeIntervals"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/events"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/intervalsTitle" />
-
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/changeIntervals"
-        style="@style/Fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/normalMargin"
-        android:text="@string/buttonChangeIntervals"
-        app:icon="@drawable/ic_update"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/intervals"
-        app:layout_constraintStart_toStartOf="@id/intervals" />
 
     <TextView
         android:id="@+id/eventsTitle"
@@ -61,17 +48,6 @@
         app:layout_constraintStart_toEndOf="@id/intervals"
         app:layout_constraintTop_toBottomOf="@id/eventsTitle" />
 
-    <TextView
-        android:id="@+id/otherTitle"
-        style="@style/SettingsTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/otherTitle"
-        app:layout_constraintBottom_toTopOf="@id/other"
-        app:layout_constraintEnd_toEndOf="@id/other"
-        app:layout_constraintStart_toStartOf="@id/other"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/other"
         android:layout_width="0dp"
@@ -79,7 +55,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/events"
-        app:layout_constraintTop_toBottomOf="@id/otherTitle">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/icon"
@@ -143,7 +119,7 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/normalMargin"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/changeIntervals"
             app:layout_constraintTop_toBottomOf="@id/timeFormatTitle">
 
             <RadioButton
@@ -163,6 +139,33 @@
                 android:text="@string/format24hours" />
 
         </RadioGroup>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/changeIntervals"
+            style="@style/Fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bigMargin"
+            android:text="@string/buttonChangeIntervals"
+            app:icon="@drawable/ic_update"
+            app:layout_constraintBottom_toTopOf="@id/addEvent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radioGroupTimeFormat" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/addEvent"
+            style="@style/Fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/normalMargin"
+            android:layout_marginBottom="@dimen/normalMargin"
+            android:text="@string/buttonAddEvent"
+            app:icon="@drawable/ic_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/changeIntervals" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

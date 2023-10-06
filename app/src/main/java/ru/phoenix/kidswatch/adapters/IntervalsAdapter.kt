@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import ru.phoenix.kidswatch.databinding.RvIntervalsBinding
+import ru.phoenix.kidswatch.databinding.RvIntervalBinding
 
 class IntervalsAdapter : RecyclerView.Adapter<IntervalsAdapter.IntervalVH>() {
 
@@ -29,7 +29,7 @@ class IntervalsAdapter : RecyclerView.Adapter<IntervalsAdapter.IntervalVH>() {
         return _intervals.size
     }
 
-    class IntervalVH(private val binding: RvIntervalsBinding) : ViewHolder(binding.root) {
+    class IntervalVH(private val binding: RvIntervalBinding) : ViewHolder(binding.root) {
 
         fun bind(interval: String) {
             binding.title.text = interval
@@ -38,16 +38,13 @@ class IntervalsAdapter : RecyclerView.Adapter<IntervalsAdapter.IntervalVH>() {
         companion object {
 
             fun getViewHolder(parent: ViewGroup): IntervalVH {
-                val binding = RvIntervalsBinding.inflate(
+                val binding = RvIntervalBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
                 )
                 return IntervalVH(binding)
             }
-
         }
-
     }
-
 }
