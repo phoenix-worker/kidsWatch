@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black">
@@ -71,13 +72,54 @@
         app:layout_constraintStart_toStartOf="@id/other"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/other"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/events"
-        app:layout_constraintTop_toBottomOf="@id/otherTitle" />
+        app:layout_constraintTop_toBottomOf="@id/otherTitle">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="@dimen/settingsKidIconSize"
+            android:layout_height="@dimen/settingsKidIconSize"
+            android:layout_marginTop="@dimen/normalMargin"
+            android:contentDescription="@string/cdKidIcon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/image_face_boy" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupSex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/normalMargin"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/normalMargin"
+            app:layout_constraintTop_toBottomOf="@id/icon">
+
+            <RadioButton
+                android:id="@+id/boy"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/smallMargin"
+                android:text="@string/radioButtonBoy" />
+
+            <RadioButton
+                android:id="@+id/girl"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/smallMargin"
+                android:text="@string/radioButtonGirl" />
+
+        </RadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

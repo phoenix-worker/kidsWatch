@@ -15,7 +15,9 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.view.doOnLayout
+import androidx.preference.PreferenceManager
 import ru.phoenix.kidswatch.R
+import ru.phoenix.kidswatch.fragments.SettingsFragment
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -28,6 +30,7 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
     private val rows = mutableListOf<Row>()
     private var faceBitmap: Bitmap? = null
     private val events = mutableListOf<Event>()
+    private val prefs by lazy { PreferenceManager.getDefaultSharedPreferences(context) }
 
     init {
         watchHandler = Handler(Looper.getMainLooper(), this)
@@ -50,7 +53,13 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
 
     private val faceImageSize = 150
     private fun initFaceImage() {
-        faceBitmap = BitmapFactory.decodeResource(context.resources, R.drawable.image_fedor)
+        faceBitmap = BitmapFactory.decodeResource(
+            context.resources,
+            when (prefs.getInt(SettingsFragment.PREF_SEX, SettingsFragment.SEX_MALE)) {
+                SettingsFragment.SEX_MALE -> R.drawable.image_face_boy
+                else -> R.drawable.image_face_girl
+            }
+        )
         faceBitmap = Bitmap.createScaledBitmap(faceBitmap!!, faceImageSize, faceImageSize, true)
     }
 

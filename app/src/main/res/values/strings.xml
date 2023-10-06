@@ -13,4 +13,7 @@
     <string name="littleDataErrorIntervals">Введите не менее двух чисел через пробел.</string>
     <string name="tooMuchDataErrorIntervals">Введите не более пяти чисел через пробел.</string>
     <string name="orderErrorIntervals">Неверный порядок чисел.</string>
+    <string name="radioButtonBoy">Мальчик</string>
+    <string name="radioButtonGirl">Девочка</string>
+    <string name="cdKidIcon">Иконка ребёнка</string>
 </resources>

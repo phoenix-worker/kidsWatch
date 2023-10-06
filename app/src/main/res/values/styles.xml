@@ -36,4 +36,8 @@
         <item name="android:textAppearance">@style/ButtonTextAppearance</item>
     </style>
 
+    <style name="RadioButton">
+        <item name="android:textSize">@dimen/radioButtonTextSize</item>
+    </style>
+
 </resources>
