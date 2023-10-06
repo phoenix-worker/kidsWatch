@@ -56,8 +56,8 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
     }
 
     private val eventImageSize = 100
-    fun addEvent(time: Long, iconRes: Int) {
-        var bitmap = BitmapFactory.decodeResource(context.resources, iconRes)
+    fun addEvent(time: Long, fileName: String) {
+        var bitmap = BitmapFactory.decodeStream(context.assets.open(fileName))
         bitmap = Bitmap.createScaledBitmap(bitmap, eventImageSize, eventImageSize, true)
         events.add(Event(time, bitmap))
     }
