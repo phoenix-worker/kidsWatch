@@ -8,8 +8,11 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
 import ru.phoenix.kidswatch.MainViewModel
 import ru.phoenix.kidswatch.R
 import ru.phoenix.kidswatch.custom.ScheduleView.Row.RowInitializer
@@ -20,6 +23,7 @@ class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
     private val prefs by lazy { PreferenceManager.getDefaultSharedPreferences(requireActivity()) }
+    private val mainVM by activityViewModels<MainViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -79,34 +83,10 @@ class MainFragment : Fragment() {
         return counter
     }
 
-    private fun addScheduleEvents() {
-        val calendar = getScheduleCalendar(getStartHours()[0])
-        calendar.set(Calendar.HOUR_OF_DAY, 7)
-        binding.schedule.addEvent(calendar.timeInMillis, "image_morning.png")
-        calendar.set(Calendar.HOUR_OF_DAY, 8)
-        binding.schedule.addEvent(calendar.timeInMillis, "image_kindergarden.png")
-        calendar.set(Calendar.HOUR_OF_DAY, 9)
-        binding.schedule.addEvent(calendar.timeInMillis, "image_breakfast.png")
-        calendar.set(Calendar.HOUR_OF_DAY, 12)
-        binding.schedule.addEvent(calendar.timeInMillis, "image_dinner.png")
-        calendar.set(Calendar.HOUR_OF_DAY, 13)
-        binding.schedule.addEvent(calendar.timeInMillis, "image_day_sleep.png")
-        calendar.set(Calendar.HOUR_OF_DAY, 15)
-        binding.schedule.addEvent(calendar.timeInMillis, "image_afternoon.png")
-        calendar.set(Calendar.HOUR_OF_DAY, 17)
-        binding.schedule.addEvent(calendar.timeInMillis, "image_car.png")
-        calendar.set(Calendar.HOUR_OF_DAY, 18)
-        binding.schedule.addEvent(calendar.timeInMillis, "image_evening.png")
-        calendar.set(Calendar.HOUR_OF_DAY, 19)
-        binding.schedule.addEvent(calendar.timeInMillis, "image_evening_meal.png")
-        calendar.set(Calendar.HOUR_OF_DAY, 20)
-        binding.schedule.addEvent(calendar.timeInMillis, "image_bathroom.png")
-        calendar.set(Calendar.HOUR_OF_DAY, 21)
-        binding.schedule.addEvent(calendar.timeInMillis, "image_games.png")
-        calendar.set(Calendar.HOUR_OF_DAY, 22)
-        binding.schedule.addEvent(calendar.timeInMillis, "image_before_sleep.png")
-        calendar.set(Calendar.HOUR_OF_DAY, 23)
-        binding.schedule.addEvent(calendar.timeInMillis, "image_sleep.png")
+    private fun addScheduleEvents() = runBlocking(Dispatchers.IO) {
+        mainVM.db.eventsDao().getAllEvents().forEach { event ->
+            binding.schedule.addEvent(event.time, event.iconFilename)
+        }
     }
 
     private fun getScheduleCalendar(startHour: Int): Calendar {

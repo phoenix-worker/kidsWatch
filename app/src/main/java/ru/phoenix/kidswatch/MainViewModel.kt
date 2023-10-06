@@ -4,11 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.preference.PreferenceManager
+import androidx.room.Room
+import ru.phoenix.kidswatch.database.Database
 import ru.phoenix.kidswatch.fragments.MainFragment.Companion.DEFAULT_INTERVALS
 import ru.phoenix.kidswatch.fragments.MainFragment.Companion.PREF_INTERVALS
 
 class MainViewModel : ViewModel() {
 
+    val db: Database
     private val prefs by lazy { PreferenceManager.getDefaultSharedPreferences(App.getInstance()) }
 
     private val _intervals = MutableLiveData<List<String>>()
@@ -31,6 +34,9 @@ class MainViewModel : ViewModel() {
 
     init {
         updateIntervals()
+        db = Room.databaseBuilder(App.getInstance(), Database::class.java, Database.dbName)
+            .addCallback(Database.dbCallback)
+            .build()
     }
 
     companion object {
