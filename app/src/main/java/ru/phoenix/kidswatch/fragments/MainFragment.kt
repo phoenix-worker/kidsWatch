@@ -107,7 +107,16 @@ class MainFragment : Fragment() {
             params.startToEnd = binding.schedule.id
             params.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID
             params.topToTop = ConstraintLayout.LayoutParams.PARENT_ID
+            params.bottomToTop = binding.calendar.id
+            params.verticalChainStyle = ConstraintLayout.LayoutParams.CHAIN_SPREAD
             binding.watch.layoutParams = params
+            val calendarParams =
+                ConstraintLayout.LayoutParams(size, ConstraintLayout.LayoutParams.WRAP_CONTENT)
+            calendarParams.topToBottom = binding.watch.id
+            calendarParams.startToStart = binding.watch.id
+            calendarParams.endToEnd = binding.watch.id
+            calendarParams.bottomToTop = binding.buttonSettings.id
+            binding.calendar.layoutParams = calendarParams
         }
         binding.schedule.doOnLayout { binding.schedule.initialize(pairs) }
     }
