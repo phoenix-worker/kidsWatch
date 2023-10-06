@@ -16,4 +16,7 @@
     <string name="radioButtonBoy">Мальчик</string>
     <string name="radioButtonGirl">Девочка</string>
     <string name="cdKidIcon">Иконка ребёнка</string>
+    <string name="format12hours">12 часов</string>
+    <string name="format24hours">24 часа</string>
+    <string name="timeFormatTitle">Формат времени</string>
 </resources>

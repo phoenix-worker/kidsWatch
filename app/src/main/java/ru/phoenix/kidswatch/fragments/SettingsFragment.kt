@@ -31,6 +31,7 @@ class SettingsFragment : Fragment() {
         binding = FragmentSettingsBinding.inflate(inflater, container, false)
         setupIntervalsRv()
         setupSex()
+        setupTimeFormat()
         return binding.root
     }
 
@@ -50,6 +51,8 @@ class SettingsFragment : Fragment() {
         }
         binding.boy.setOnCheckedChangeListener(onSexChanged)
         binding.girl.setOnCheckedChangeListener(onSexChanged)
+        binding.format12hours.setOnCheckedChangeListener(onTimeFormatChanged)
+        binding.format24hours.setOnCheckedChangeListener(onTimeFormatChanged)
     }
 
     private val onSexChanged: (CompoundButton, Boolean) -> Unit = { button, isChecked ->
@@ -62,6 +65,19 @@ class SettingsFragment : Fragment() {
                 }
             ).commit()
             setupSex()
+        }
+    }
+
+    private val onTimeFormatChanged: (CompoundButton, Boolean) -> Unit = { button, isChecked ->
+        if (isChecked) {
+            prefs.edit().putInt(
+                PREF_TIME_FORMAT,
+                when (button.id) {
+                    R.id.format12hours -> TIME_FORMAT_12
+                    else -> TIME_FORMAT_24
+                }
+            ).commit()
+            setupTimeFormat()
         }
     }
 
@@ -88,6 +104,18 @@ class SettingsFragment : Fragment() {
         }
     }
 
+    private fun setupTimeFormat() {
+        when (prefs.getInt(PREF_TIME_FORMAT, TIME_FORMAT_12)) {
+            TIME_FORMAT_12 -> {
+                binding.format12hours.isChecked = true
+            }
+
+            else -> {
+                binding.format24hours.isChecked = true
+            }
+        }
+    }
+
     private inner class Decoration : ItemDecoration() {
         override fun getItemOffsets(
             outRect: Rect,
@@ -110,6 +138,9 @@ class SettingsFragment : Fragment() {
         const val PREF_SEX = "pref_sex"
         const val SEX_MALE = 0
         const val SEX_FEMALE = 1
+        const val PREF_TIME_FORMAT = "pref_time_format"
+        const val TIME_FORMAT_12 = 0
+        const val TIME_FORMAT_24 = 1
     }
 
 }

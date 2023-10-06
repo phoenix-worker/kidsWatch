@@ -7,13 +7,13 @@
     </style>
 
     <style name="ButtonTextAppearance" parent="TextAppearance.AppCompat">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/buttonTextSize</item>
     </style>
 
     <style name="SettingsTitle">
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">@dimen/settingsScreenTitleTextSize</item>
         <item name="android:padding">@dimen/normalMargin</item>
     </style>
 
@@ -27,7 +27,7 @@
     <style name="DialogText">
         <item name="android:letterSpacing">0.05</item>
         <item name="android:lineSpacingExtra">4dp</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/dialogTextSize</item>
     </style>
 
     <style name="DialogButton" parent="Widget.Material3.Button.UnelevatedButton">

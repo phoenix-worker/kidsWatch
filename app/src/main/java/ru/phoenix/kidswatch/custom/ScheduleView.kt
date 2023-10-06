@@ -18,6 +18,8 @@ import androidx.core.view.doOnLayout
 import androidx.preference.PreferenceManager
 import ru.phoenix.kidswatch.R
 import ru.phoenix.kidswatch.fragments.SettingsFragment
+import ru.phoenix.kidswatch.fragments.SettingsFragment.Companion.PREF_TIME_FORMAT
+import ru.phoenix.kidswatch.fragments.SettingsFragment.Companion.TIME_FORMAT_12
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -26,13 +28,22 @@ import java.util.Locale
 class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs), Handler.Callback {
 
     private var watchHandler: Handler? = null
-    private val timeFormat = SimpleDateFormat("h:mm", Locale.getDefault())
+    private val scheduleTimeFormat: SimpleDateFormat
+    private val watchesTimeFormat: SimpleDateFormat
     private val rows = mutableListOf<Row>()
     private var faceBitmap: Bitmap? = null
     private val events = mutableListOf<Event>()
     private val prefs by lazy { PreferenceManager.getDefaultSharedPreferences(context) }
 
     init {
+        scheduleTimeFormat = when (prefs.getInt(PREF_TIME_FORMAT, TIME_FORMAT_12)) {
+            TIME_FORMAT_12 -> SimpleDateFormat("h:mm", Locale.getDefault())
+            else -> SimpleDateFormat("H:mm", Locale.getDefault())
+        }
+        watchesTimeFormat = when (prefs.getInt(PREF_TIME_FORMAT, TIME_FORMAT_12)) {
+            TIME_FORMAT_12 -> SimpleDateFormat("h:mm:ss", Locale.getDefault())
+            else -> SimpleDateFormat("H:mm:ss", Locale.getDefault())
+        }
         watchHandler = Handler(Looper.getMainLooper(), this)
     }
 
@@ -138,7 +149,7 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
                     val x = step * minuteSizePx
                     canvas.drawLine(x, row.rectF.top, x, row.rectF.bottom, meshPaint)
                     canvas.drawText(
-                        timeFormat.format(Date(i)),
+                        scheduleTimeFormat.format(Date(i)),
                         x + textOffsetX,
                         row.rectF.top + textOffsetY,
                         textPaint
@@ -186,8 +197,7 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
     }
     private val watchBackMargin = 15f
     private fun drawWatches(canvas: Canvas, x: Float, y: Float) {
-        val format = SimpleDateFormat("h:mm:ss", Locale.getDefault())
-        val text = format.format(Date())
+        val text = watchesTimeFormat.format(Date())
         val rect = Rect()
         watchPaint.getTextBounds(text, 0, text.length, rect)
         val backRect = RectF(
