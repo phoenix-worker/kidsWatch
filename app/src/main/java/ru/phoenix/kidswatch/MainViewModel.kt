@@ -49,6 +49,13 @@ class MainViewModel : ViewModel() {
         }
     }
 
+    fun deleteEvent(time: Long) {
+        viewModelScope.launch(Dispatchers.IO) {
+            db.eventsDao().deleteEventByTime(time)
+            updateEvents()
+        }
+    }
+
     init {
         updateIntervals()
         updateEvents()

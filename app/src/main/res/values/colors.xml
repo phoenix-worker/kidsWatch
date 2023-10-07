@@ -10,4 +10,5 @@
     <color name="rvItemBackground">#FF9800</color>
     <color name="buttonBackground">#FF9800</color>
     <color name="lightRipple">#1AFFFFFF</color>
+    <color name="textColorHint">#B3FFFFFF</color>
 </resources>

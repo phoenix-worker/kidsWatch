@@ -41,6 +41,7 @@ class MainFragment : Fragment() {
         addScheduleEvents()
         binding.schedule.startWatches()
         binding.watch.startWatches()
+        binding.calendar.date = System.currentTimeMillis()
         binding.buttonSettings.setOnClickListener {
             findNavController().navigate(R.id.action_MainFragment_to_SettingsFragment)
         }
@@ -70,6 +71,7 @@ class MainFragment : Fragment() {
             else calendar.add(Calendar.HOUR_OF_DAY, countHours(startHour, startHours[0]))
             pairs.add(RowInitializer(first, calendar.timeInMillis, Color.parseColor("#03A9F4")))
         }
+        binding.schedule.initialize(pairs)
     }
 
     private fun countHours(start: Int, end: Int): Int {
@@ -84,8 +86,14 @@ class MainFragment : Fragment() {
     }
 
     private fun addScheduleEvents() = runBlocking(Dispatchers.IO) {
+        val startHours = getStartHours()
+        val calendar = getScheduleCalendar(startHours[0])
+        val tempCalendar = Calendar.getInstance()
         mainVM.db.eventsDao().getAllEvents().forEach { event ->
-            binding.schedule.addEvent(event.time, event.iconFilename)
+            tempCalendar.timeInMillis = event.time
+            calendar.set(Calendar.HOUR_OF_DAY, tempCalendar.get(Calendar.HOUR_OF_DAY))
+            calendar.set(Calendar.MINUTE, tempCalendar.get(Calendar.MINUTE))
+            binding.schedule.addEvent(calendar.timeInMillis, event.iconFilename)
         }
     }
 

@@ -213,9 +213,16 @@ class AnalogWatchView(
             val outerR = hoursDigitsRatio * width / 2
             val outerX = outerR * sin(angle)
             val outerY = outerR * cos(angle)
-            val text = when (prefs.getInt(PREF_TIME_FORMAT, TIME_FORMAT_12)) {
-                TIME_FORMAT_12 -> if (i != 0) i.toString() else "12"
-                else -> if (i != 0) (i + 12).toString() else "0"
+            val hourOfDay = handlerCalendar.get(Calendar.HOUR_OF_DAY)
+            val text = when {
+                hourOfDay < 12 -> getHoursTextFor12HourFormat(i)
+
+                else -> {
+                    when (prefs.getInt(PREF_TIME_FORMAT, TIME_FORMAT_12)) {
+                        TIME_FORMAT_12 -> getHoursTextFor12HourFormat(i)
+                        else -> getHoursTextFor24HourFormat(i)
+                    }
+                }
             }
             val rect = Rect()
             hoursDigitsPaint.getTextBounds(text, 0, text.length, rect)
@@ -226,6 +233,14 @@ class AnalogWatchView(
                 hoursDigitsPaint
             )
         }
+    }
+
+    private fun getHoursTextFor12HourFormat(i: Int): String {
+        return if (i != 0) i.toString() else "12"
+    }
+
+    private fun getHoursTextFor24HourFormat(i: Int): String {
+        return if (i != 0) (i + 12).toString() else "0"
     }
 
     private val minutesDigitsPaint = Paint().apply {

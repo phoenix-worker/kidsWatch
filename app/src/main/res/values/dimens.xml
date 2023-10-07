@@ -15,4 +15,5 @@
     <dimen name="eventIconSize">60dp</dimen>
     <dimen name="imageButtonSize">48dp</dimen>
     <dimen name="intervalTextSize">26sp</dimen>
+    <dimen name="emptyViewTextSize">16sp</dimen>
 </resources>

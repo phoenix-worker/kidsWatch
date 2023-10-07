@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.preference.PreferenceManager
@@ -90,7 +92,9 @@ class SettingsFragment : Fragment() {
     }
 
     private fun onEventsChanged(events: List<DbEvent>) {
-        (binding.events.adapter as EventsAdapter).updateList(events)
+        binding.events.isInvisible = events.isEmpty()
+        binding.eventsEmptyView.isVisible = events.isEmpty()
+        (binding.events.adapter as EventsAdapter).submitList(events)
     }
 
     private fun setupIntervalsRv() {
@@ -100,7 +104,7 @@ class SettingsFragment : Fragment() {
 
     private fun setupEventsRv() {
         binding.events.addItemDecoration(Decoration())
-        binding.events.adapter = EventsAdapter()
+        binding.events.adapter = EventsAdapter(mainVM)
     }
 
     private fun setupSex() {
