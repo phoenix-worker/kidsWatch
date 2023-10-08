@@ -42,10 +42,12 @@ class AddEventDialog : DialogFragment() {
             val calendar = Calendar.getInstance(Locale.getDefault())
             calendar.set(Calendar.HOUR_OF_DAY, binding.timePicker.currentHour)
             calendar.set(Calendar.MINUTE, binding.timePicker.currentMinute)
-            mainVM.saveNewEvent(
-                time = calendar.timeInMillis,
-                iconFileName = addEventsDialogVM.getSelectedIconFilename()
-            )
+            addEventsDialogVM.getSelectedIconFilename()?.let { iconFileName ->
+                mainVM.saveNewEvent(
+                    time = calendar.timeInMillis,
+                    iconFileName = iconFileName
+                )
+            }
             dismiss()
         }
     }

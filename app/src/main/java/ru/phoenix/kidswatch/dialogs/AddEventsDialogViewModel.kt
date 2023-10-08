@@ -42,9 +42,8 @@ class AddEventsDialogViewModel : ViewModel() {
         }
     }
 
-    fun getSelectedIconFilename(): String {
+    fun getSelectedIconFilename(): String? {
         return _icons.value?.firstOrNull { it.isSelected }?.fileName
-            ?: throw IllegalStateException("Can\'t get icon filename")
     }
 
     init {

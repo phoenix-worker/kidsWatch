@@ -2,7 +2,6 @@ package ru.phoenix.kidswatch.dialogs
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -76,7 +75,6 @@ class ChangeIntervalsDialog : DialogFragment() {
                 }
             }
         } catch (exc: Exception) {
-            Log.d("SISKI", exc.toString())
             binding.info.text = getString(R.string.inputErrorIntervals)
             false
         }
