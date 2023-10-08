@@ -9,7 +9,6 @@
     <dimen name="editTextHeight">60dp</dimen>
     <dimen name="settingsKidIconSize">80dp</dimen>
     <dimen name="radioButtonTextSize">20sp</dimen>
-    <dimen name="settingsTitleTextSize">18sp</dimen>
     <dimen name="settingsScreenTitleTextSize">24sp</dimen>
     <dimen name="dialogTextSize">18sp</dimen>
     <dimen name="buttonTextSize">18sp</dimen>

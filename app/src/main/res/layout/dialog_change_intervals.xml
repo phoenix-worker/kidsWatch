@@ -37,6 +37,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/normalMargin"
+        android:textColor="@color/rows_1"
         app:layout_constraintEnd_toEndOf="@id/intervals"
         app:layout_constraintStart_toStartOf="@id/intervals"
         app:layout_constraintTop_toBottomOf="@id/intervals"

@@ -54,13 +54,12 @@
     <TextView
         android:id="@+id/eventsEmptyView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="100dp"
         android:gravity="center"
         android:text="@string/noEventsHint"
         android:textColor="@color/textColorHint"
-        android:textSize="@dimen/emptyViewTextSize"
+        android:textSize="@dimen/settingsScreenTitleTextSize"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/other"
         app:layout_constraintStart_toEndOf="@id/intervals"
         app:layout_constraintTop_toBottomOf="@id/eventsTitle" />
