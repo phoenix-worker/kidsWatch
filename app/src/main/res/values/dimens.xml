@@ -15,8 +15,6 @@
     <dimen name="eventIconSize">60dp</dimen>
     <dimen name="imageButtonSize">48dp</dimen>
     <dimen name="intervalTextSize">26sp</dimen>
-    <dimen name="emptyViewTextSize">16sp</dimen>
-    <dimen name="calendarTextSize">16sp</dimen>
     <dimen name="eventTimeTextSize">26sp</dimen>
     <dimen name="itemCornersRadius">8dp</dimen>
     <dimen name="intervalMinHeight">100dp</dimen>
