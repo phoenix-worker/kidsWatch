@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="intervalTextSize">16sp</dimen>
+    <dimen name="imageButtonSize">24dp</dimen>
+    <dimen name="eventIconSize">36dp</dimen>
+    <dimen name="intervalMinHeight">48dp</dimen>
+    <dimen name="settingsKidIconSize">48dp</dimen>
+    <dimen name="dialogTextSize">12sp</dimen>
 </resources>

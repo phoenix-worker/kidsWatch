@@ -122,7 +122,7 @@ class MainFragment : Fragment() {
         binding.root.doOnLayout {
             val screenWidth = activity?.window?.decorView?.width ?: 0
             val size = (screenWidth * ANALOG_WATCH_RATIO).toInt()
-            if (resources.configuration.smallestScreenWidthDp <= 320) binding.calendar.isVisible =
+            if (resources.configuration.smallestScreenWidthDp <= 600) binding.calendar.isVisible =
                 false
             val params = ConstraintLayout.LayoutParams(size, size)
             params.startToEnd = binding.schedule.id
