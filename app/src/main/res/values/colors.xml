@@ -19,4 +19,5 @@
     <color name="rows_3">#00798c</color>
     <color name="rows_4">#30638e</color>
     <color name="rows_5">@color/primary</color>
+    <color name="launcherBackground">#212121</color>
 </resources>
