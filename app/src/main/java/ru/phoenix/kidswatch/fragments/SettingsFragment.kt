@@ -19,6 +19,7 @@ import ru.phoenix.kidswatch.adapters.EventsAdapter
 import ru.phoenix.kidswatch.adapters.IntervalsAdapter
 import ru.phoenix.kidswatch.database.DbEvent
 import ru.phoenix.kidswatch.databinding.FragmentSettingsBinding
+import ru.phoenix.kidswatch.dialogs.AddEventDialog
 import ru.phoenix.kidswatch.dialogs.ChangeIntervalsDialog
 
 class SettingsFragment : Fragment() {
@@ -54,6 +55,9 @@ class SettingsFragment : Fragment() {
     private fun setListeners() {
         binding.changeIntervals.setOnClickListener {
             ChangeIntervalsDialog().show(childFragmentManager, "change_intervals_dialog")
+        }
+        binding.addEvent.setOnClickListener {
+            AddEventDialog().show(childFragmentManager, "add_event_dialog")
         }
         binding.boy.setOnCheckedChangeListener(onSexChanged)
         binding.girl.setOnCheckedChangeListener(onSexChanged)

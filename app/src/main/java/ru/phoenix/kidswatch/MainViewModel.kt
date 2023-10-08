@@ -8,6 +8,7 @@ import androidx.preference.PreferenceManager
 import androidx.room.Room
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import ru.phoenix.kidswatch.database.Database
 import ru.phoenix.kidswatch.database.DbEvent
 import ru.phoenix.kidswatch.fragments.MainFragment.Companion.DEFAULT_INTERVALS
@@ -45,7 +46,7 @@ class MainViewModel : ViewModel() {
 
     private fun updateEvents() {
         viewModelScope.launch(Dispatchers.IO) {
-            _events.postValue(db.eventsDao().getAllEvents())
+            _events.postValue(db.eventsDao().getAllEvents().sortedBy { it.time })
         }
     }
 
@@ -54,6 +55,16 @@ class MainViewModel : ViewModel() {
             db.eventsDao().deleteEventByTime(time)
             updateEvents()
         }
+    }
+
+    fun saveNewEvent(time: Long, iconFileName: String) = runBlocking(Dispatchers.IO) {
+        db.eventsDao().insert(
+            DbEvent(
+                time = time,
+                iconFilename = iconFileName
+            )
+        )
+        updateEvents()
     }
 
     init {
