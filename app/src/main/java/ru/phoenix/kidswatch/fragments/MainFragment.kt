@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.doOnLayout
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -119,8 +120,10 @@ class MainFragment : Fragment() {
 
     private fun setupWidgetsSize() {
         binding.root.doOnLayout {
-            val screenSize = activity?.window?.decorView?.width ?: 0
-            val size = (screenSize * ANALOG_WATCH_RATIO).toInt()
+            val screenWidth = activity?.window?.decorView?.width ?: 0
+            val size = (screenWidth * ANALOG_WATCH_RATIO).toInt()
+            if (resources.configuration.smallestScreenWidthDp <= 320) binding.calendar.isVisible =
+                false
             val params = ConstraintLayout.LayoutParams(size, size)
             params.startToEnd = binding.schedule.id
             params.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID

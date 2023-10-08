@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="buttonTextSize">10sp</dimen>
+    <dimen name="intervalTextSize">12sp</dimen>
+    <dimen name="settingsScreenTitleTextSize">14sp</dimen>
+    <dimen name="radioButtonTextSize">8sp</dimen>
+    <dimen name="dialogTextSize">10sp</dimen>
+    <dimen name="tinyMargin">2dp</dimen>
+    <dimen name="smallMargin">4dp</dimen>
+    <dimen name="normalMargin">6dp</dimen>
+    <dimen name="bigMargin">8dp</dimen>
+    <dimen name="intervalMinHeight">32dp</dimen>
+    <dimen name="imageButtonSize">18dp</dimen>
+    <dimen name="eventIconSize">28dp</dimen>
+    <dimen name="settingsKidIconSize">30dp</dimen>
+    <dimen name="radioButtonHeight">24dp</dimen>
+    <dimen name="dialogPadding">8dp</dimen>
+    <dimen name="timePickerWidth">200dp</dimen>
+    <dimen name="dialogWidgetWidth">200dp</dimen>
+    <dimen name="timePickerHeight">150dp</dimen>
+</resources>

@@ -6,12 +6,12 @@
     android:background="@color/primary"
     android:padding="@dimen/dialogPadding">
 
-    <TimePicker
+    <android.widget.TimePicker
         android:id="@+id/timePicker"
         style="@style/TimePicker"
         android:layout_width="@dimen/timePickerWidth"
-        android:layout_height="wrap_content"
-        android:timePickerMode="clock"
+        android:layout_height="@dimen/timePickerHeight"
+        android:timePickerMode="spinner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -16,7 +16,10 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.view.doOnLayout
 import androidx.preference.PreferenceManager
+import ru.phoenix.kidswatch.MainViewModel
 import ru.phoenix.kidswatch.R
+import ru.phoenix.kidswatch.fragments.MainFragment.Companion.DEFAULT_INTERVALS
+import ru.phoenix.kidswatch.fragments.MainFragment.Companion.PREF_INTERVALS
 import ru.phoenix.kidswatch.fragments.SettingsFragment
 import ru.phoenix.kidswatch.fragments.SettingsFragment.Companion.PREF_TIME_FORMAT
 import ru.phoenix.kidswatch.fragments.SettingsFragment.Companion.TIME_FORMAT_12
@@ -36,6 +39,11 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
     private val events = mutableListOf<Event>()
     private val prefs by lazy { PreferenceManager.getDefaultSharedPreferences(context) }
 
+    private val faceImageSize: Int
+    private val eventImageSize: Int
+    private val watchTextSize: Float
+    private val hoursTextSize: Float
+
     init {
         scheduleTimeFormat = when (prefs.getInt(PREF_TIME_FORMAT, TIME_FORMAT_24)) {
             TIME_FORMAT_12 -> SimpleDateFormat("h:mm", Locale.getDefault())
@@ -45,6 +53,13 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
             TIME_FORMAT_12 -> SimpleDateFormat("h:mm:ss", Locale.getDefault())
             else -> SimpleDateFormat("H:mm:ss", Locale.getDefault())
         }
+        val intervals = prefs.getString(PREF_INTERVALS, null) ?: DEFAULT_INTERVALS
+        val intervalsCount = MainViewModel.getPointFromIntervalsString(intervals).size + 1
+        val screenHeightPx = context.resources.displayMetrics.heightPixels
+        faceImageSize = (0.6 * (screenHeightPx / (intervalsCount))).toInt()
+        eventImageSize = (0.5 * (screenHeightPx / (intervalsCount))).toInt()
+        watchTextSize = (0.15f * (screenHeightPx / (intervalsCount)))
+        hoursTextSize = (0.15f * (screenHeightPx / (intervalsCount)))
         watchHandler = Handler(Looper.getMainLooper(), this)
     }
 
@@ -56,14 +71,12 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
         }
     }
 
-    private val eventImageSize = 100
     fun addEvent(time: Long, fileName: String) {
         var bitmap = BitmapFactory.decodeStream(context.assets.open(fileName))
         bitmap = Bitmap.createScaledBitmap(bitmap, eventImageSize, eventImageSize, true)
         events.add(Event(time, bitmap))
     }
 
-    private val faceImageSize = 150
     private fun initFaceImage() {
         faceBitmap = BitmapFactory.decodeResource(
             context.resources,
@@ -132,7 +145,7 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
 
     private val textPaint = Paint().apply {
         color = ContextCompat.getColor(context, R.color.white)
-        textSize = 24f
+        textSize = hoursTextSize
         typeface = Typeface.DEFAULT_BOLD
         style = Paint.Style.FILL
         isAntiAlias = true
@@ -177,8 +190,8 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
                         currentX - safeZonePx < row.rectF.left ->
                             currentX = row.rectF.left + safeZonePx
                     }
-                    drawWatches(canvas, currentX, currentY)
                     drawFace(canvas, currentX, currentY)
+                    drawWatches(canvas, currentX, currentY)
                 }
             }
         }
@@ -187,7 +200,7 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
     private val watchPaint = Paint().apply {
         color = ContextCompat.getColor(context, R.color.watchTextColor)
         textAlign = Paint.Align.CENTER
-        textSize = 30f
+        textSize = watchTextSize
         typeface = Typeface.DEFAULT_BOLD
         isAntiAlias = true
     }
@@ -223,7 +236,7 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
         }
     }
 
-    private val eventYOffsetFactor = 0.18f
+    private val eventYOffsetFactor = 0.25f
     private fun drawEvents(canvas: Canvas) {
         events.forEach { event ->
             rows.filter { it.start <= event.time && it.end > event.time }.forEach { row ->

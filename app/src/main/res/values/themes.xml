@@ -4,6 +4,7 @@
         <item name="colorPrimary">@color/primary</item>
         <item name="android:windowBackground">@color/windowBackground</item>
         <item name="colorControlActivated">@color/rows_1</item>
+        <item name="materialCalendarStyle">@style/Calendar</item>
     </style>
 
 </resources>

@@ -8,6 +8,7 @@
         <item name="iconTint">@color/white</item>
         <item name="android:paddingTop">@dimen/normalMargin</item>
         <item name="android:paddingBottom">@dimen/normalMargin</item>
+        <item name="android:minHeight">0dp</item>
     </style>
 
     <style name="ButtonTextAppearance" parent="TextAppearance.AppCompat">
@@ -33,11 +34,15 @@
     </style>
 
     <style name="Calendar" parent="@style/ThemeOverlay.MaterialComponents.MaterialCalendar">
-        <item name="android:dateTextAppearance">@style/ButtonTextAppearance</item>
+        <item name="android:dateTextAppearance">@style/CalendarDateTextAppearance</item>
+    </style>
+
+    <style name="CalendarDateTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/calendarDateTextSize</item>
     </style>
 
     <style name="TimePicker" parent="ThemeOverlay.Material3.MaterialTimePicker">
-        <item name="android:timePickerMode">clock</item>
+        <item name="android:timePickerMode">spinner</item>
         <item name="android:headerBackground">@color/accent</item>
         <item name="android:numbersBackgroundColor">@color/accent</item>
     </style>

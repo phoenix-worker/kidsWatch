@@ -89,7 +89,7 @@
         <RadioGroup
             android:id="@+id/radioGroupSex"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/radioButtonHeight"
             android:layout_marginTop="@dimen/normalMargin"
             android:gravity="center"
             android:orientation="horizontal"
@@ -101,7 +101,7 @@
                 android:id="@+id/boy"
                 style="@style/RadioButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/smallMargin"
                 android:text="@string/radioButtonBoy" />
 
@@ -109,7 +109,7 @@
                 android:id="@+id/girl"
                 style="@style/RadioButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/smallMargin"
                 android:text="@string/radioButtonGirl" />
 
@@ -130,7 +130,7 @@
         <RadioGroup
             android:id="@+id/radioGroupTimeFormat"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/radioButtonHeight"
             android:layout_marginTop="@dimen/normalMargin"
             android:gravity="center"
             android:orientation="horizontal"
@@ -142,7 +142,7 @@
                 android:id="@+id/format12hours"
                 style="@style/RadioButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/smallMargin"
                 android:text="@string/format12hours" />
 
@@ -150,7 +150,7 @@
                 android:id="@+id/format24hours"
                 style="@style/RadioButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/smallMargin"
                 android:text="@string/format24hours" />
 
