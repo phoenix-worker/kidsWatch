@@ -43,6 +43,9 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
     private val eventImageSize: Int
     private val watchTextSize: Float
     private val hoursTextSize: Float
+    private val textOffsetX: Float
+    private val textOffsetY: Float
+    private val safeZonePx: Int
 
     init {
         scheduleTimeFormat = when (prefs.getInt(PREF_TIME_FORMAT, TIME_FORMAT_24)) {
@@ -60,6 +63,9 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
         eventImageSize = (0.5 * (screenHeightPx / (intervalsCount))).toInt()
         watchTextSize = (0.15f * (screenHeightPx / (intervalsCount)))
         hoursTextSize = (0.15f * (screenHeightPx / (intervalsCount)))
+        textOffsetX = (0.05f * (screenHeightPx / (intervalsCount)))
+        textOffsetY = (0.2f * (screenHeightPx / (intervalsCount)))
+        safeZonePx = (0.4 * (screenHeightPx / (intervalsCount))).toInt()
         watchHandler = Handler(Looper.getMainLooper(), this)
     }
 
@@ -151,8 +157,6 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
         isAntiAlias = true
     }
 
-    private val textOffsetX = 15f
-    private val textOffsetY = 40f
     private fun drawHours(canvas: Canvas) {
         rows.forEach { row ->
             val minuteMs = 1000L * 60L
@@ -173,7 +177,6 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
         }
     }
 
-    private val safeZonePx = 100
     private val verticalOffsetFactor = 0.35f
     private fun drawOverlay(canvas: Canvas) {
         rows.forEach { row ->

@@ -12,8 +12,8 @@
     <dimen name="intervalTextSize">26sp</dimen>
     <dimen name="itemCornersRadius">8dp</dimen>
     <dimen name="intervalMinHeight">100dp</dimen>
-    <dimen name="timePickerWidth">300</dimen>
-    <dimen name="timePickerHeight">300</dimen>
+    <dimen name="timePickerWidth">300dp</dimen>
+    <dimen name="timePickerHeight">300dp</dimen>
     <dimen name="calendarDateTextSize">8sp</dimen>
     <dimen name="tinyMargin">4dp</dimen>
     <dimen name="smallMargin">8dp</dimen>

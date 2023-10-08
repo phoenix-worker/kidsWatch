@@ -17,7 +17,7 @@
     <dimen name="intervalTextSize">26sp</dimen>
     <dimen name="itemCornersRadius">8dp</dimen>
     <dimen name="intervalMinHeight">100dp</dimen>
-    <dimen name="timePickerWidth">300</dimen>
-    <dimen name="timePickerHeight">300</dimen>
+    <dimen name="timePickerWidth">200dp</dimen>
+    <dimen name="timePickerHeight">200dp</dimen>
     <dimen name="radioButtonHeight">60dp</dimen>
 </resources>
