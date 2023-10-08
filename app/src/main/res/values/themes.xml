@@ -1,5 +1,9 @@
 <resources>
 
-    <style name="Theme.KidsWatch" parent="Theme.MaterialComponents.NoActionBar" />
+    <style name="Theme.KidsWatch" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="android:windowBackground">@color/windowBackground</item>
+        <item name="colorControlActivated">@color/rows_1</item>
+    </style>
 
 </resources>

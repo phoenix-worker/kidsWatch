@@ -1,11 +1,11 @@
 package ru.phoenix.kidswatch.fragments
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
+import ru.phoenix.kidswatch.App
 import ru.phoenix.kidswatch.MainViewModel
 import ru.phoenix.kidswatch.R
 import ru.phoenix.kidswatch.custom.ScheduleView.Row.RowInitializer
@@ -60,6 +61,14 @@ class MainFragment : Fragment() {
         return MainViewModel.getPointFromIntervalsString(intervalsString)
     }
 
+    private val rowColors = listOf(
+        ContextCompat.getColor(App.getInstance(), R.color.rows_1),
+        ContextCompat.getColor(App.getInstance(), R.color.rows_2),
+        ContextCompat.getColor(App.getInstance(), R.color.rows_3),
+        ContextCompat.getColor(App.getInstance(), R.color.rows_4),
+        ContextCompat.getColor(App.getInstance(), R.color.rows_5)
+    )
+
     private fun setupSchedule() {
         val startHours = getStartHours()
         val calendar = getScheduleCalendar(startHours[0])
@@ -69,7 +78,8 @@ class MainFragment : Fragment() {
             if (index < startHours.lastIndex)
                 calendar.add(Calendar.HOUR_OF_DAY, countHours(startHour, startHours[index + 1]))
             else calendar.add(Calendar.HOUR_OF_DAY, countHours(startHour, startHours[0]))
-            pairs.add(RowInitializer(first, calendar.timeInMillis, Color.parseColor("#03A9F4")))
+            val color = rowColors[index + rowColors.size - startHours.size]
+            pairs.add(RowInitializer(first, calendar.timeInMillis, color))
         }
         binding.schedule.initialize(pairs)
     }

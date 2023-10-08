@@ -15,6 +15,7 @@ import androidx.preference.PreferenceManager
 import ru.phoenix.kidswatch.R
 import ru.phoenix.kidswatch.fragments.SettingsFragment.Companion.PREF_TIME_FORMAT
 import ru.phoenix.kidswatch.fragments.SettingsFragment.Companion.TIME_FORMAT_12
+import ru.phoenix.kidswatch.fragments.SettingsFragment.Companion.TIME_FORMAT_24
 import java.util.Calendar
 import kotlin.math.cos
 import kotlin.math.sin
@@ -218,7 +219,7 @@ class AnalogWatchView(
                 hourOfDay < 12 -> getHoursTextFor12HourFormat(i)
 
                 else -> {
-                    when (prefs.getInt(PREF_TIME_FORMAT, TIME_FORMAT_12)) {
+                    when (prefs.getInt(PREF_TIME_FORMAT, TIME_FORMAT_24)) {
                         TIME_FORMAT_12 -> getHoursTextFor12HourFormat(i)
                         else -> getHoursTextFor24HourFormat(i)
                     }

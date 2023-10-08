@@ -126,7 +126,7 @@ class SettingsFragment : Fragment() {
     }
 
     private fun setupTimeFormat() {
-        when (prefs.getInt(PREF_TIME_FORMAT, TIME_FORMAT_12)) {
+        when (prefs.getInt(PREF_TIME_FORMAT, TIME_FORMAT_24)) {
             TIME_FORMAT_12 -> {
                 binding.format12hours.isChecked = true
             }

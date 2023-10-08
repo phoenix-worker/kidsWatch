@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/buttonBackground"
+    android:background="@color/primary"
     android:padding="@dimen/dialogPadding">
 
     <TextView
@@ -44,7 +44,7 @@
 
     <Button
         android:id="@+id/buttonSave"
-        style="@style/DialogButton"
+        style="@style/Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/buttonSave"

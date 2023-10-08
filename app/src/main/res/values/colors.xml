@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="white">#FFFFFFFF</color>
+    <color name="primary">#003d5b</color>
+    <color name="accent">#30638e</color>
     <color name="imageButtonTint">#98FFFFFF</color>
     <color name="black">#000000</color>
     <color name="watchTextColor">#212121</color>
     <color name="icLauncherBackground">#FF9800</color>
-    <color name="analogWatchesHours">#EF5350</color>
+    <color name="analogWatchesHours">@color/white</color>
     <color name="secondHandle">#9E9E9E</color>
-    <color name="rvItemBackground">#FF9800</color>
-    <color name="buttonBackground">#FF9800</color>
+    <color name="rvItemBackground">#30638e</color>
+    <color name="buttonBackground">@color/accent</color>
     <color name="lightRipple">#1AFFFFFF</color>
     <color name="textColorHint">#B3FFFFFF</color>
+    <color name="windowBackground">@color/primary</color>
+    <color name="rows_1">#edae49</color>
+    <color name="rows_2">#d1495b</color>
+    <color name="rows_3">#00798c</color>
+    <color name="rows_4">#30638e</color>
+    <color name="rows_5">@color/primary</color>
 </resources>

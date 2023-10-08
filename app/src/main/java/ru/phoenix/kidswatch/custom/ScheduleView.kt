@@ -20,6 +20,7 @@ import ru.phoenix.kidswatch.R
 import ru.phoenix.kidswatch.fragments.SettingsFragment
 import ru.phoenix.kidswatch.fragments.SettingsFragment.Companion.PREF_TIME_FORMAT
 import ru.phoenix.kidswatch.fragments.SettingsFragment.Companion.TIME_FORMAT_12
+import ru.phoenix.kidswatch.fragments.SettingsFragment.Companion.TIME_FORMAT_24
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -36,11 +37,11 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
     private val prefs by lazy { PreferenceManager.getDefaultSharedPreferences(context) }
 
     init {
-        scheduleTimeFormat = when (prefs.getInt(PREF_TIME_FORMAT, TIME_FORMAT_12)) {
+        scheduleTimeFormat = when (prefs.getInt(PREF_TIME_FORMAT, TIME_FORMAT_24)) {
             TIME_FORMAT_12 -> SimpleDateFormat("h:mm", Locale.getDefault())
             else -> SimpleDateFormat("H:mm", Locale.getDefault())
         }
-        watchesTimeFormat = when (prefs.getInt(PREF_TIME_FORMAT, TIME_FORMAT_12)) {
+        watchesTimeFormat = when (prefs.getInt(PREF_TIME_FORMAT, TIME_FORMAT_24)) {
             TIME_FORMAT_12 -> SimpleDateFormat("h:mm:ss", Locale.getDefault())
             else -> SimpleDateFormat("H:mm:ss", Locale.getDefault())
         }

@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/buttonBackground"
+    android:background="@color/primary"
     android:padding="@dimen/dialogPadding">
 
     <TimePicker
         android:id="@+id/timePicker"
+        style="@style/TimePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:timePickerMode="clock"
@@ -28,7 +29,7 @@
 
     <Button
         android:id="@+id/buttonSave"
-        style="@style/DialogButton"
+        style="@style/Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/normalMargin"

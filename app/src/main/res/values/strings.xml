@@ -9,7 +9,7 @@
     <string name="buttonSave">Сохранить</string>
     <string name="inputErrorIntervals">Ошибка ввода.</string>
     <string name="weirdDataErrorIntervals">Подозрительные числа для времени.</string>
-    <string name="littleDataErrorIntervals">Введите не менее двух чисел через пробел.</string>
+    <string name="littleDataErrorIntervals">Введите не менее трёх чисел через пробел.</string>
     <string name="tooMuchDataErrorIntervals">Введите не более пяти чисел через пробел.</string>
     <string name="orderErrorIntervals">Неверный порядок чисел.</string>
     <string name="radioButtonBoy">Мальчик</string>

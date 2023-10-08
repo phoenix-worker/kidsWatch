@@ -20,6 +20,7 @@
 
     <CalendarView
         android:id="@+id/calendar"
+        style="@style/Calendar"
         android:layout_width="150dp"
         android:layout_height="150dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +28,7 @@
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/buttonSettings"
-        style="@style/Fab"
+        style="@style/Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/buttonSettings"
