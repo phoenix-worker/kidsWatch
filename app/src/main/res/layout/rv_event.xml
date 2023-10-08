@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/normalMargin"
         android:textColor="@color/white"
-        android:textSize="26sp"
+        android:textSize="@dimen/eventTimeTextSize"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/icon"

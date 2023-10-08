@@ -9,7 +9,7 @@
     <TimePicker
         android:id="@+id/timePicker"
         style="@style/TimePicker"
-        android:layout_width="500dp"
+        android:layout_width="@dimen/timePickerWidth"
         android:layout_height="wrap_content"
         android:timePickerMode="clock"
         app:layout_constraintStart_toStartOf="parent"
