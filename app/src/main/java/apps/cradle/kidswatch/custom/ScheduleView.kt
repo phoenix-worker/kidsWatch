@@ -262,6 +262,7 @@ class ScheduleView(context: Context, attrs: AttributeSet) : View(context, attrs)
     }
 
     fun startWatches() {
+        invalidate()
         watchHandler?.sendEmptyMessageDelayed(MSG_UPDATE_WATCHES, getHandlerMsgDelay())
     }
 

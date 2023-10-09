@@ -11,6 +11,7 @@
     <color name="secondHandle">#9E9E9E</color>
     <color name="rvItemBackground">#30638e</color>
     <color name="buttonBackground">@color/accent</color>
+    <color name="buttonBackgroundDisabled">#686868</color>
     <color name="lightRipple">#1AFFFFFF</color>
     <color name="textColorHint">#B3FFFFFF</color>
     <color name="windowBackground">@color/primary</color>

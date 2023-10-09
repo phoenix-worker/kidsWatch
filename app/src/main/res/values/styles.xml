@@ -4,7 +4,7 @@
     <style name="Button" parent="Widget.Material3.Button.UnelevatedButton">
         <item name="android:textAppearance">@style/ButtonTextAppearance</item>
         <item name="android:textColor">@color/white</item>
-        <item name="backgroundTint">@color/buttonBackground</item>
+        <item name="backgroundTint">@color/button_background_tint</item>
         <item name="iconTint">@color/white</item>
         <item name="android:paddingTop">@dimen/normalMargin</item>
         <item name="android:paddingBottom">@dimen/normalMargin</item>
