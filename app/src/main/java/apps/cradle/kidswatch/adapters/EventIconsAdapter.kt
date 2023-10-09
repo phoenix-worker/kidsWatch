@@ -1,4 +1,4 @@
-package ru.phoenix.kidswatch.adapters
+package apps.cradle.kidswatch.adapters
 
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import ru.phoenix.kidswatch.R
-import ru.phoenix.kidswatch.adapters.EventIconsAdapter.EventIcon
-import ru.phoenix.kidswatch.adapters.EventIconsAdapter.EventIconVH
-import ru.phoenix.kidswatch.databinding.RvEventIconBinding
-import ru.phoenix.kidswatch.dialogs.AddEventsDialogViewModel
+import apps.cradle.kidswatch.R
+import apps.cradle.kidswatch.adapters.EventIconsAdapter.EventIcon
+import apps.cradle.kidswatch.adapters.EventIconsAdapter.EventIconVH
+import apps.cradle.kidswatch.databinding.RvEventIconBinding
+import apps.cradle.kidswatch.dialogs.AddEventsDialogViewModel
 
 class EventIconsAdapter(
     private val addEventsDialogVM: AddEventsDialogViewModel

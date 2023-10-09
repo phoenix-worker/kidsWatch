@@ -1,4 +1,4 @@
-package ru.phoenix.kidswatch.database
+package apps.cradle.kidswatch.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

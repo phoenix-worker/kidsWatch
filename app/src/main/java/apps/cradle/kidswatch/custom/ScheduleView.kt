@@ -1,4 +1,4 @@
-package ru.phoenix.kidswatch.custom
+package apps.cradle.kidswatch.custom
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -16,14 +16,14 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.view.doOnLayout
 import androidx.preference.PreferenceManager
-import ru.phoenix.kidswatch.MainViewModel
-import ru.phoenix.kidswatch.R
-import ru.phoenix.kidswatch.fragments.MainFragment.Companion.DEFAULT_INTERVALS
-import ru.phoenix.kidswatch.fragments.MainFragment.Companion.PREF_INTERVALS
-import ru.phoenix.kidswatch.fragments.SettingsFragment
-import ru.phoenix.kidswatch.fragments.SettingsFragment.Companion.PREF_TIME_FORMAT
-import ru.phoenix.kidswatch.fragments.SettingsFragment.Companion.TIME_FORMAT_12
-import ru.phoenix.kidswatch.fragments.SettingsFragment.Companion.TIME_FORMAT_24
+import apps.cradle.kidswatch.MainViewModel
+import apps.cradle.kidswatch.R
+import apps.cradle.kidswatch.fragments.MainFragment.Companion.DEFAULT_INTERVALS
+import apps.cradle.kidswatch.fragments.MainFragment.Companion.PREF_INTERVALS
+import apps.cradle.kidswatch.fragments.SettingsFragment
+import apps.cradle.kidswatch.fragments.SettingsFragment.Companion.PREF_TIME_FORMAT
+import apps.cradle.kidswatch.fragments.SettingsFragment.Companion.TIME_FORMAT_12
+import apps.cradle.kidswatch.fragments.SettingsFragment.Companion.TIME_FORMAT_24
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date

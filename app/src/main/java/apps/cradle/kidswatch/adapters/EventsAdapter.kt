@@ -1,4 +1,4 @@
-package ru.phoenix.kidswatch.adapters
+package apps.cradle.kidswatch.adapters
 
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import ru.phoenix.kidswatch.MainViewModel
-import ru.phoenix.kidswatch.database.DbEvent
-import ru.phoenix.kidswatch.databinding.RvEventBinding
+import apps.cradle.kidswatch.MainViewModel
+import apps.cradle.kidswatch.database.DbEvent
+import apps.cradle.kidswatch.databinding.RvEventBinding
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale

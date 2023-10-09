@@ -1,4 +1,4 @@
-package ru.phoenix.kidswatch.dialogs
+package apps.cradle.kidswatch.dialogs
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,9 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import ru.phoenix.kidswatch.MainViewModel
-import ru.phoenix.kidswatch.adapters.EventIconsAdapter
-import ru.phoenix.kidswatch.databinding.DialogAddEventBinding
+import apps.cradle.kidswatch.MainViewModel
+import apps.cradle.kidswatch.adapters.EventIconsAdapter
+import apps.cradle.kidswatch.databinding.DialogAddEventBinding
 import java.util.Calendar
 import java.util.Locale
 

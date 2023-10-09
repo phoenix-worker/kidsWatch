@@ -1,4 +1,4 @@
-package ru.phoenix.kidswatch.fragments
+package apps.cradle.kidswatch.fragments
 
 import android.graphics.Rect
 import android.os.Bundle
@@ -13,14 +13,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
-import ru.phoenix.kidswatch.MainViewModel
-import ru.phoenix.kidswatch.R
-import ru.phoenix.kidswatch.adapters.EventsAdapter
-import ru.phoenix.kidswatch.adapters.IntervalsAdapter
-import ru.phoenix.kidswatch.database.DbEvent
-import ru.phoenix.kidswatch.databinding.FragmentSettingsBinding
-import ru.phoenix.kidswatch.dialogs.AddEventDialog
-import ru.phoenix.kidswatch.dialogs.ChangeIntervalsDialog
+import apps.cradle.kidswatch.MainViewModel
+import apps.cradle.kidswatch.R
+import apps.cradle.kidswatch.adapters.EventsAdapter
+import apps.cradle.kidswatch.adapters.IntervalsAdapter
+import apps.cradle.kidswatch.database.DbEvent
+import apps.cradle.kidswatch.databinding.FragmentSettingsBinding
+import apps.cradle.kidswatch.dialogs.AddEventDialog
+import apps.cradle.kidswatch.dialogs.ChangeIntervalsDialog
 
 class SettingsFragment : Fragment() {
 

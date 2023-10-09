@@ -1,8 +1,8 @@
-package ru.phoenix.kidswatch
+package apps.cradle.kidswatch
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import ru.phoenix.kidswatch.databinding.ActivityMainBinding
+import apps.cradle.kidswatch.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

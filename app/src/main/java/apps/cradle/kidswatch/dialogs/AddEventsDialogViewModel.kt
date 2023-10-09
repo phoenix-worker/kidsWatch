@@ -1,13 +1,13 @@
-package ru.phoenix.kidswatch.dialogs
+package apps.cradle.kidswatch.dialogs
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import apps.cradle.kidswatch.App
+import apps.cradle.kidswatch.adapters.EventIconsAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import ru.phoenix.kidswatch.App
-import ru.phoenix.kidswatch.adapters.EventIconsAdapter
 
 class AddEventsDialogViewModel : ViewModel() {
 

@@ -1,4 +1,4 @@
-package ru.phoenix.kidswatch.fragments
+package apps.cradle.kidswatch.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,13 +12,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
+import apps.cradle.kidswatch.App
+import apps.cradle.kidswatch.MainViewModel
+import apps.cradle.kidswatch.R
+import apps.cradle.kidswatch.custom.ScheduleView.Row.RowInitializer
+import apps.cradle.kidswatch.databinding.FragmentMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
-import ru.phoenix.kidswatch.App
-import ru.phoenix.kidswatch.MainViewModel
-import ru.phoenix.kidswatch.R
-import ru.phoenix.kidswatch.custom.ScheduleView.Row.RowInitializer
-import ru.phoenix.kidswatch.databinding.FragmentMainBinding
 import java.util.Calendar
 
 class MainFragment : Fragment() {

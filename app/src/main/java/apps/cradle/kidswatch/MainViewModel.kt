@@ -1,4 +1,4 @@
-package ru.phoenix.kidswatch
+package apps.cradle.kidswatch
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,13 +6,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.preference.PreferenceManager
 import androidx.room.Room
+import apps.cradle.kidswatch.database.Database
+import apps.cradle.kidswatch.database.DbEvent
+import apps.cradle.kidswatch.fragments.MainFragment.Companion.DEFAULT_INTERVALS
+import apps.cradle.kidswatch.fragments.MainFragment.Companion.PREF_INTERVALS
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import ru.phoenix.kidswatch.database.Database
-import ru.phoenix.kidswatch.database.DbEvent
-import ru.phoenix.kidswatch.fragments.MainFragment.Companion.DEFAULT_INTERVALS
-import ru.phoenix.kidswatch.fragments.MainFragment.Companion.PREF_INTERVALS
 
 class MainViewModel : ViewModel() {
 

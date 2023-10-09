@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ru.phoenix.kidswatch.custom.ScheduleView
+    <apps.cradle.kidswatch.custom.ScheduleView
         android:id="@+id/schedule"
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -12,7 +12,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Динамический размер -->
-    <ru.phoenix.kidswatch.custom.AnalogWatchView
+    <apps.cradle.kidswatch.custom.AnalogWatchView
         android:id="@+id/watch"
         android:layout_width="150dp"
         android:layout_height="150dp"

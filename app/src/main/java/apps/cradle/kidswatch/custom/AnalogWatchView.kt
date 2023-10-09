@@ -1,4 +1,4 @@
-package ru.phoenix.kidswatch.custom
+package apps.cradle.kidswatch.custom
 
 import android.content.Context
 import android.graphics.Canvas
@@ -12,10 +12,10 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
-import ru.phoenix.kidswatch.R
-import ru.phoenix.kidswatch.fragments.SettingsFragment.Companion.PREF_TIME_FORMAT
-import ru.phoenix.kidswatch.fragments.SettingsFragment.Companion.TIME_FORMAT_12
-import ru.phoenix.kidswatch.fragments.SettingsFragment.Companion.TIME_FORMAT_24
+import apps.cradle.kidswatch.R
+import apps.cradle.kidswatch.fragments.SettingsFragment.Companion.PREF_TIME_FORMAT
+import apps.cradle.kidswatch.fragments.SettingsFragment.Companion.TIME_FORMAT_12
+import apps.cradle.kidswatch.fragments.SettingsFragment.Companion.TIME_FORMAT_24
 import java.util.Calendar
 import kotlin.math.cos
 import kotlin.math.sin

@@ -1,4 +1,4 @@
-package ru.phoenix.kidswatch.dialogs
+package apps.cradle.kidswatch.dialogs
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -9,10 +9,10 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import androidx.preference.PreferenceManager
-import ru.phoenix.kidswatch.MainViewModel
-import ru.phoenix.kidswatch.R
-import ru.phoenix.kidswatch.databinding.DialogChangeIntervalsBinding
-import ru.phoenix.kidswatch.fragments.MainFragment
+import apps.cradle.kidswatch.MainViewModel
+import apps.cradle.kidswatch.R
+import apps.cradle.kidswatch.databinding.DialogChangeIntervalsBinding
+import apps.cradle.kidswatch.fragments.MainFragment
 
 class ChangeIntervalsDialog : DialogFragment() {
 
