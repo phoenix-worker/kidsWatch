@@ -22,4 +22,5 @@
     <string name="cdEventIcon">Иконка события</string>
     <string name="buttonAddEvent">Добавить событие</string>
     <string name="noEventsHint">Нет событий</string>
+    <string name="buttonAboutApp">О разработчике</string>
 </resources>

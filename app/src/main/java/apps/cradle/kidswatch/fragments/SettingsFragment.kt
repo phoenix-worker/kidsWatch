@@ -1,6 +1,8 @@
 package apps.cradle.kidswatch.fragments
 
+import android.content.Intent
 import android.graphics.Rect
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -63,6 +65,10 @@ class SettingsFragment : Fragment() {
         binding.girl.setOnCheckedChangeListener(onSexChanged)
         binding.format12hours.setOnCheckedChangeListener(onTimeFormatChanged)
         binding.format24hours.setOnCheckedChangeListener(onTimeFormatChanged)
+        binding.about.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://apps-cradle.ru"))
+            startActivity(intent)
+        }
     }
 
     private val onSexChanged: (CompoundButton, Boolean) -> Unit = { button, isChecked ->
